@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsuarioAlunoResponse {
+public class UsuarioResponse {
 
     private Long id;
 
@@ -21,5 +21,5 @@ public class UsuarioAlunoResponse {
 
     private String senha;
 
-    private TipoDeUsuario tipoDeUsuario = TipoDeUsuario.ALUNO;
+    private TipoDeUsuario tipoDeUsuario;
 }

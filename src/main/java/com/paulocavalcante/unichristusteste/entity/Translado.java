@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "translados")
 public class Translado {
 
     @Id
@@ -24,9 +25,10 @@ public class Translado {
     @Column
     private char turno;
 
-    @Column
+
+    @OneToMany
     private List<Destinos> destinos;
 
-    @Column
+
     private List<Veiculo> veiculos;
 }
