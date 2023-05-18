@@ -1,6 +1,5 @@
 package com.paulocavalcante.unichristusteste.request;
 
-
 import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
 import lombok.Builder;
 import lombok.Data;

@@ -27,6 +27,7 @@ public class UsuarioMapper {
     public static UsuarioResponse modelToResponse(Usuario usuario) {
         return UsuarioResponse
                 .builder()
+                .id(usuario.getId())
                 .nome(usuario.getNome())
                 .login(usuario.getLogin())
                 .senha(usuario.getSenha())
