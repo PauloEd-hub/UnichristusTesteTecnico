@@ -1,7 +1,6 @@
 package com.paulocavalcante.unichristusteste.enums;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public enum TipoDeUsuario {
-    ADMINISTRACAO("administracao"),
-    ALUNO("aluno");
+    ADMINISTRACAO("0"),
+    ALUNO("1");
 
     private String tipoDeUsario;
 }

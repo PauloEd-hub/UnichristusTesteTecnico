@@ -26,9 +26,9 @@ public class Translado {
     private char turno;
 
 
-    @OneToMany
-    private List<Destinos> destinos;
-
-
-    private List<Veiculo> veiculos;
+//    @OneToMany
+//    private List<Destinos> destinos;
+//
+//
+//    private List<Veiculo> veiculos;
 }

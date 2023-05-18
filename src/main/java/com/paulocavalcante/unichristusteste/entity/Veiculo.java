@@ -17,7 +17,7 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(length = 255)
     private String descricao;
 
     @Column
