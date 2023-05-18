@@ -20,7 +20,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastro")
     public UsuarioResponse cadastraUsuario(@RequestBody UsuarioRequest usuarioRequest) {
         var response = UsuarioMapper.requestToModel(usuarioRequest);
 
