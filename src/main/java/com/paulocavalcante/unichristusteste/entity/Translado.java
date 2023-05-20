@@ -19,16 +19,20 @@ public class Translado {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
     private LocalDate dataDesejada;
 
-    @Column
     private char turno;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-//    @OneToMany
-//    private List<Destinos> destinos;
-//
-//
-//    private List<Veiculo> veiculos;
+    @ManyToOne
+    @JoinColumn(name = "veiculo_id")
+    private Veiculo veiculo;
+
+    @ManyToOne
+    @JoinColumn(name = "destino_id")
+    private Destino destino;
+
 }

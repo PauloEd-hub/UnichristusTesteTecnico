@@ -3,7 +3,10 @@ package com.paulocavalcante.unichristusteste.entity;
 
 import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,16 +21,16 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
     private String nome;
 
-    @Column
     private String login;
-    @Column
+
     private String senha;
 
-    @Column
     @Enumerated(EnumType.STRING)
     private TipoDeUsuario tipoDeUsuario;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Translado> translados;
 
 }

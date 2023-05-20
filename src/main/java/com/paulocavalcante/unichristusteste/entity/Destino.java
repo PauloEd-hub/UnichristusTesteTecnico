@@ -3,6 +3,8 @@ package com.paulocavalcante.unichristusteste.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,4 +23,7 @@ public class Destino {
 
     @Column
     private String sigla;
+
+    @OneToMany(mappedBy = "destino")
+    private List<Translado> translados;
 }
