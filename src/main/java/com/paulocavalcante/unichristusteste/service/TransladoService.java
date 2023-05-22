@@ -31,26 +31,32 @@ public class TransladoService {
 
     public Translado cadastraTranslado(Translado response) {
         var transladosExistentes = transladoRepository.findAll();
-
         var usuarioTransladoCadastrado = transladosExistentes.stream().filter(usuario -> usuario.getUsuario().getId() == response.getUsuario().getId()).collect(Collectors.toList());
 
 
-        if(!usuarioTransladoCadastrado.isEmpty()) {
-            for (Translado translado : transladosExistentes) {
-                if (((response.getDataDesejada().isEqual(translado.getDataDesejada()) && (response.getTurno().equals(translado.getTurno()))))) {
-                    throw new DuplicidadeException("Você já selecionou um translado para esta data desejada e turno com o mesmo destino");
+        try {
+            if (!usuarioTransladoCadastrado.isEmpty()) {
+                for (Translado translado : transladosExistentes) {
+                    if (((response.getDataDesejada().isEqual(translado.getDataDesejada()) && (response.getTurno().equals(translado.getTurno()))))) {
+                        throw new DuplicidadeException("Não pode fazer a solicitação de Translado para destinos diferentes, " +
+                                "quando  a data desejada e o turno já foram escolhidas.");
+                    }
                 }
             }
-        }
-        var capacidadeAtual = response.getVeiculo().getOcupacaoMaxima();
-        if (capacidadeAtual == 0) {
-            throw new CapacidadeMaximaExcedidaException("O carro está lotado para esta data desejada, turno e destino");
-        }
-        capacidadeAtual -= 1;
+            var capacidadeAtual = response.getVeiculo().getOcupacaoMaxima();
+            if (capacidadeAtual == 0) {
+                throw new CapacidadeMaximaExcedidaException("O carro está lotado para esta data desejada, turno e destino");
+            }
+            capacidadeAtual -= 1;
 
-        response.getVeiculo().setOcupacaoMaxima(capacidadeAtual);
+            response.getVeiculo().setOcupacaoMaxima(capacidadeAtual);
 
-        return transladoRepository.save(response);
+        } catch (RuntimeException ex) {
+            ex.printStackTrace();
+
+        }
+
+            return transladoRepository.save(response);
     }
 
     public List<Translado> buscaTranslados() {
