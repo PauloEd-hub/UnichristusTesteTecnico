@@ -1,6 +1,7 @@
 package com.paulocavalcante.unichristusteste.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -30,6 +31,7 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private TipoDeUsuario tipoDeUsuario;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "usuario")
     private List<Translado> translados;
 

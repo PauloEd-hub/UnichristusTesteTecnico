@@ -1,6 +1,7 @@
 package com.paulocavalcante.unichristusteste.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public class Veiculo {
     @Column
     private int ocupacaoMaxima;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "veiculo" )
     private List<Translado> translados;
 }

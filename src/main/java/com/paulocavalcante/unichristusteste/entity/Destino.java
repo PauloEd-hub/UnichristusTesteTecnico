@@ -1,5 +1,6 @@
 package com.paulocavalcante.unichristusteste.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class Destino {
     @Column
     private String sigla;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "destino")
     private List<Translado> translados;
 }

@@ -1,8 +1,12 @@
 package com.paulocavalcante.unichristusteste.mapper;
 
+import com.paulocavalcante.unichristusteste.entity.Destino;
 import com.paulocavalcante.unichristusteste.entity.Translado;
 import com.paulocavalcante.unichristusteste.entity.Usuario;
+import com.paulocavalcante.unichristusteste.entity.Veiculo;
+import com.paulocavalcante.unichristusteste.enums.Turno;
 import com.paulocavalcante.unichristusteste.request.TransladoRequest;
+import com.paulocavalcante.unichristusteste.request.TransladoRequestSimplificado;
 import com.paulocavalcante.unichristusteste.response.TransladoResponse;
 import com.paulocavalcante.unichristusteste.response.UsuarioResponse;
 import org.springframework.stereotype.Component;
@@ -18,8 +22,9 @@ public class TransladoMapper {
     public static Translado requestToModel(TransladoRequest transladoRequest) {
         return Translado
                 .builder()
+                .id(transladoRequest.getId())
                 .dataDesejada(transladoRequest.getDataDesejada())
-                .turno(transladoRequest.getTurno())
+                .turno(Turno.valueOf(transladoRequest.getTurno().toString()))
                 .veiculo(transladoRequest.getVeiculo())
                 .destino(transladoRequest.getDestino())
                 .build();
@@ -30,10 +35,22 @@ public class TransladoMapper {
                 .builder()
                 .id(translado.getId())
                 .dataDesejada(translado.getDataDesejada())
-                .turno(translado.getTurno())
+                .turno(Turno.valueOf(translado.getTurno().toString()))
                 .usuario(translado.getUsuario())
                 .veiculo(translado.getVeiculo())
                 .destino(translado.getDestino())
+                .build();
+    }
+
+    public static  Translado simplificadoToModel(TransladoRequestSimplificado transladoRequestSimplificado,
+                                                 Usuario usuario, Destino destino, Veiculo veiculo) {
+        return Translado
+                .builder()
+                .dataDesejada(transladoRequestSimplificado.getDataDesejada())
+                .turno(Turno.valueOf(transladoRequestSimplificado.getTurno().toString()))
+                .usuario(usuario)
+                .destino(destino)
+                .veiculo(veiculo)
                 .build();
     }
 

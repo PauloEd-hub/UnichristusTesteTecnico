@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-public enum TipoDeUsuario {
-    ADMIN("0"),
-    ALUNO("1");
+public enum Turno {
+    MANHA("manha"),
+    TARDE("tarde"),
+    NOITE("noite");
 
-    private String tipoDeUsario;
+    private String turno;
 }
