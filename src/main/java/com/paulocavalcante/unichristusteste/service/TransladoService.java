@@ -1,5 +1,6 @@
 package com.paulocavalcante.unichristusteste.service;
 
+import com.paulocavalcante.unichristusteste.Exceptions.CapacidadeMaximaExcedidaException;
 import com.paulocavalcante.unichristusteste.Exceptions.DuplicidadeException;
 import com.paulocavalcante.unichristusteste.entity.Translado;
 import com.paulocavalcante.unichristusteste.entity.Usuario;
@@ -31,15 +32,23 @@ public class TransladoService {
     public Translado cadastraTranslado(Translado response) {
         var transladosExistentes = transladoRepository.findAll();
 
-        var usuarioTRansladoCadastrado = transladosExistentes.stream().filter(usuario -> usuario.getUsuario().getId() == response.getUsuario().getId()).collect(Collectors.toList());
+        var usuarioTransladoCadastrado = transladosExistentes.stream().filter(usuario -> usuario.getUsuario().getId() == response.getUsuario().getId()).collect(Collectors.toList());
 
 
-        if(!usuarioTRansladoCadastrado.isEmpty())
+        if(!usuarioTransladoCadastrado.isEmpty()) {
             for (Translado translado : transladosExistentes) {
                 if (((response.getDataDesejada().isEqual(translado.getDataDesejada()) && (response.getTurno().equals(translado.getTurno()))))) {
                     throw new DuplicidadeException("Você já selecionou um translado para esta data desejada e turno com o mesmo destino");
                 }
             }
+        }
+        var capacidadeAtual = response.getVeiculo().getOcupacaoMaxima();
+        if (capacidadeAtual == 0) {
+            throw new CapacidadeMaximaExcedidaException("O carro está lotado para esta data desejada, turno e destino");
+        }
+        capacidadeAtual -= 1;
+
+        response.getVeiculo().setOcupacaoMaxima(capacidadeAtual);
 
         return transladoRepository.save(response);
     }
