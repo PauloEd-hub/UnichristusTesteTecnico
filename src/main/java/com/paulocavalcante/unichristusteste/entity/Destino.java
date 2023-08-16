@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Builder
 @Entity
 @Table(name = "destinos")
