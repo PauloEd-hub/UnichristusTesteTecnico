@@ -4,6 +4,7 @@ import com.paulocavalcante.unichristusteste.entity.Usuario;
 import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
 import com.paulocavalcante.unichristusteste.request.UsuarioRequest;
 import com.paulocavalcante.unichristusteste.response.UsuarioResponse;
+
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -18,10 +19,11 @@ public class UsuarioMapper {
         return Usuario
                 .builder()
                 .nome(usuarioRequest.getNome())
-                .login(usuarioRequest.getLogin())
+                .email(usuarioRequest.getEmail())
                 .senha(usuarioRequest.getSenha())
                 .tipoDeUsuario(TipoDeUsuario.valueOf(usuarioRequest.getTipoDeUsuario().toString()))
                 .build();
+
     }
 
     public static UsuarioResponse modelToResponse(Usuario usuario) {
@@ -29,7 +31,7 @@ public class UsuarioMapper {
                 .builder()
                 .id(usuario.getId())
                 .nome(usuario.getNome())
-                .login(usuario.getLogin())
+                .email(usuario.getEmail())
                 .senha(usuario.getSenha())
                 .tipoDeUsuario(TipoDeUsuario.valueOf(usuario.getTipoDeUsuario().toString()))
                 .build();

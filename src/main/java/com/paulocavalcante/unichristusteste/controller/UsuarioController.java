@@ -18,25 +18,25 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping
+    @GetMapping //Mostra todos os usuários cadastrados
     public List<UsuarioResponse> usuariosCadastrados() {
         return UsuarioMapper.modelToResponseList(usuarioService.usuariosCadastrados());
     }
 
-    @PostMapping("/cadastro")
+    @PostMapping("/cadastro") //cadastra usuário
     public UsuarioResponse cadastraUsuario(@RequestBody UsuarioRequest usuarioRequest) {
         var response = UsuarioMapper.requestToModel(usuarioRequest);
 
         return UsuarioMapper.modelToResponse(usuarioService.cadastraUsuario(response));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //Busca usuário por id
     public UsuarioResponse buscaUsuario(@PathVariable Long id) {
         return UsuarioMapper.modelToResponse(usuarioService.buscaUsuario(id));
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") //Deleta usuário
     public void deletaUsuario(@PathVariable Long id) {
          usuarioService.deletaUsuario(id);
     }

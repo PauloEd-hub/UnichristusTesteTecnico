@@ -4,6 +4,7 @@ import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
@@ -18,7 +19,7 @@ public class UsuarioRequest {
 
     @NotBlank(message = "Informe o login válido")
     @NotNull
-    private String login;
+    private String email;
 
     @NotBlank(message = "Informe a senha")
     @Size(min = 8, max = 15)
@@ -26,5 +27,5 @@ public class UsuarioRequest {
     private String senha;
 
     @NotNull
-    private TipoDeUsuario tipoDeUsuario;
+    private List<TipoDeUsuario> tipoDeUsuario;
 }
