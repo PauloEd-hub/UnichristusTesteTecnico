@@ -2,7 +2,7 @@ package com.paulocavalcante.unichristusteste.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
+import com.paulocavalcante.unichristusteste.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,11 +33,11 @@ public class Usuario  implements UserDetails{
     private String senha;
 
     @Enumerated(EnumType.STRING)
-    private TipoDeUsuario tipoDeUsuario;
+    private Role role;
 
     @JsonBackReference
     @OneToMany(mappedBy = "usuario")
-    private Translado translados;
+    private List<Translado> translados;
 
 
     @Override
@@ -72,7 +72,7 @@ public class Usuario  implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-       return List.of(new SimpleGrantedAuthority(tipoDeUsuario.name()));
+       return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
 }

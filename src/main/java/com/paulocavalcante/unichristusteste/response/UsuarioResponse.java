@@ -1,7 +1,7 @@
 package com.paulocavalcante.unichristusteste.response;
 
 
-import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
+import com.paulocavalcante.unichristusteste.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,5 +22,5 @@ public class UsuarioResponse {
 
     private String senha;
 
-    private TipoDeUsuario tipoDeUsuario;
+    private Role role;
 }

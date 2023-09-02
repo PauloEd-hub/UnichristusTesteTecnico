@@ -1,6 +1,6 @@
 package com.paulocavalcante.unichristusteste.request;
 
-import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
+import com.paulocavalcante.unichristusteste.enums.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,5 +27,5 @@ public class UsuarioRequest {
     private String senha;
 
     @NotNull
-    private List<TipoDeUsuario> tipoDeUsuario;
+    private List<Role> role;
 }

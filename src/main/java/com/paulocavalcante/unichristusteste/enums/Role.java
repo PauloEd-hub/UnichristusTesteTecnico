@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public enum TipoDeUsuario {
+public enum Role {
     ADMIN("0"),
     ALUNO("1");
 
-    private String tipoDeUsario;
+    private String role;
 }

@@ -1,7 +1,7 @@
 package com.paulocavalcante.unichristusteste.mapper;
 
 import com.paulocavalcante.unichristusteste.entity.Usuario;
-import com.paulocavalcante.unichristusteste.enums.TipoDeUsuario;
+import com.paulocavalcante.unichristusteste.enums.Role;
 import com.paulocavalcante.unichristusteste.request.UsuarioRequest;
 import com.paulocavalcante.unichristusteste.response.UsuarioResponse;
 
@@ -21,7 +21,7 @@ public class UsuarioMapper {
                 .nome(usuarioRequest.getNome())
                 .email(usuarioRequest.getEmail())
                 .senha(usuarioRequest.getSenha())
-                .tipoDeUsuario(TipoDeUsuario.valueOf(usuarioRequest.getTipoDeUsuario().toString()))
+                .role(Role.valueOf(usuarioRequest.getRole().toString()))
                 .build();
 
     }
@@ -33,7 +33,7 @@ public class UsuarioMapper {
                 .nome(usuario.getNome())
                 .email(usuario.getEmail())
                 .senha(usuario.getSenha())
-                .tipoDeUsuario(TipoDeUsuario.valueOf(usuario.getTipoDeUsuario().toString()))
+                .role(Role.valueOf(usuario.getRole().toString()))
                 .build();
     }
 

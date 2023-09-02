@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AutheticationRequest {
 
-    @NotBlank(message = "Informe o login")
-    private String login;
+    @NotBlank(message = "Informe o email")
+    private String email;
 
 
     @NotBlank(message = "Informe a senha")
