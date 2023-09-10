@@ -1,7 +1,7 @@
 package com.paulocavalcante.unichristusteste.service;
 
-import com.paulocavalcante.unichristusteste.entity.Usuario;
-import com.paulocavalcante.unichristusteste.repository.UsuarioRepository;
+import com.paulocavalcante.unichristusteste.entity.User;
+import com.paulocavalcante.unichristusteste.repository.UserRepository;
 import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,23 +12,23 @@ import java.util.List;
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UserRepository userRepository;
 
-    public List<Usuario> usuariosCadastrados() {
-        return usuarioRepository.findAll();
+    public List<User> usuariosCadastrados() {
+        return userRepository.findAll();
     }
 
-    public Usuario cadastraUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public User cadastraUsuario(User user) {
+        return userRepository.save(user);
     }
 
-    public Usuario buscaUsuario(Long id) {
-        return usuarioRepository.findById(id)
+    public User buscaUsuario(Long id) {
+        return userRepository.findById(id)
                 .orElseThrow(() -> new NoResultException("Usuário não encontrado"));
     }
 
     public void deletaUsuario(Long id) {
 
-         usuarioRepository.deleteById(id);
+         userRepository.deleteById(id);
     }
 }

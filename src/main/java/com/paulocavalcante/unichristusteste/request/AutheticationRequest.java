@@ -17,6 +17,6 @@ public class AutheticationRequest {
 
 
     @NotBlank(message = "Informe a senha")
-    private String passoword;
+    private String senha;
 
 }

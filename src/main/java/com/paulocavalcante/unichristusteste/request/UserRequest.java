@@ -11,7 +11,7 @@ import lombok.NonNull;
 
 @Data
 @Builder
-public class UsuarioRequest {
+public class UserRequest {
 
     @NotBlank(message = "Informe o nome")
     @NonNull

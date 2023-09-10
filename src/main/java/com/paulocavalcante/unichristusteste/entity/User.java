@@ -20,7 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Builder
 @Entity
 @Table(name = "usuarios")
-public class Usuario  implements UserDetails{
+public class User implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,7 +36,7 @@ public class Usuario  implements UserDetails{
     private Role role;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "user")
     private List<Translado> translados;
 
 

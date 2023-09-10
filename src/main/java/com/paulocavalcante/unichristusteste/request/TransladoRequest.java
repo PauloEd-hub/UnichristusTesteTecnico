@@ -2,7 +2,6 @@ package com.paulocavalcante.unichristusteste.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.paulocavalcante.unichristusteste.entity.Destino;
-import com.paulocavalcante.unichristusteste.entity.Usuario;
 import com.paulocavalcante.unichristusteste.entity.Veiculo;
 import com.paulocavalcante.unichristusteste.enums.Turno;
 import jakarta.validation.constraints.NotBlank;
@@ -11,7 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 @Data
@@ -31,7 +29,7 @@ public class TransladoRequest {
     @NotNull
     private Turno turno;
 
-//    private Usuario usuario;
+//    private User user;
 
     @NotBlank(message = "Informe o veículo")
     @NotNull

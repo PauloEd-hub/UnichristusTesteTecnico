@@ -4,6 +4,7 @@ import java.security.Key;
 import java.util.*;
 import java.util.function.Function;
 
+import com.paulocavalcante.unichristusteste.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -12,14 +13,12 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.paulocavalcante.unichristusteste.entity.Usuario;
-
 @Service
 public class JwtService {
 
     private final String SECRET_KEY = "6253bcb5ca3596cb70c438510dea7ab7d8ed40dfd2fe8c704473e3d7ba725bf6";
 
-    public Object generateTokenUser(Optional<Usuario> user) {
+    public Object generateTokenUser(Optional<User> user) {
         return null;
     }
 

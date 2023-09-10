@@ -3,12 +3,9 @@ package com.paulocavalcante.unichristusteste.service;
 import com.paulocavalcante.unichristusteste.Exceptions.CapacidadeMaximaExcedidaException;
 import com.paulocavalcante.unichristusteste.Exceptions.DuplicidadeException;
 import com.paulocavalcante.unichristusteste.entity.Translado;
-import com.paulocavalcante.unichristusteste.entity.Usuario;
-import com.paulocavalcante.unichristusteste.repository.DestinoRepository;
 import com.paulocavalcante.unichristusteste.repository.TransladoRepository;
-import com.paulocavalcante.unichristusteste.repository.UsuarioRepository;
+import com.paulocavalcante.unichristusteste.repository.UserRepository;
 import com.paulocavalcante.unichristusteste.repository.VeiculoRepository;
-import com.paulocavalcante.unichristusteste.request.TransladoRequestSimplificado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,11 +24,11 @@ public class TransladoService {
     private VeiculoRepository veiculoRepository;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UserRepository userRepository;
 
     public Translado cadastraTranslado(Translado response) {
         var transladosExistentes = transladoRepository.findAll();
-        var usuarioTransladoCadastrado = transladosExistentes.stream().filter(usuario -> usuario.getUsuario().getId() == response.getUsuario().getId()).collect(Collectors.toList());
+        var usuarioTransladoCadastrado = transladosExistentes.stream().filter(usuario -> usuario.getUser().getId() == response.getUser().getId()).collect(Collectors.toList());
 
 
         try {

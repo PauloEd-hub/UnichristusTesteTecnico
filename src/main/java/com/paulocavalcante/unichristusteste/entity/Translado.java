@@ -1,14 +1,11 @@
 package com.paulocavalcante.unichristusteste.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.paulocavalcante.unichristusteste.enums.Turno;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -30,7 +27,7 @@ public class Translado {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     @JsonManagedReference
-    private Usuario usuario;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "veiculo_id")
