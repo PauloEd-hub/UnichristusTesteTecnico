@@ -27,5 +27,5 @@ public class UserRequest {
     private String senha;
 
     @NotNull
-    private List<Role> role;
+    private Role role;
 }

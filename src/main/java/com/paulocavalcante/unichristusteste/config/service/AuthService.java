@@ -1,15 +1,18 @@
 package com.paulocavalcante.unichristusteste.config.service;
 
 import com.paulocavalcante.unichristusteste.repository.UserRepository;
+import com.paulocavalcante.unichristusteste.request.AutheticationRequest;
 import com.paulocavalcante.unichristusteste.request.UserRequest;
 import com.paulocavalcante.unichristusteste.response.AuthenticationResponse;
 import jakarta.persistence.NoResultException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthService {
 
     @Autowired
@@ -22,7 +25,7 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
 
 
-    public AuthenticationResponse auth(UserRequest request) {
+    public AuthenticationResponse auth(AutheticationRequest request) {
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new NoResultException("Usuário não encontrado"));
 

@@ -32,6 +32,7 @@ public class SecurityConfiguration {
          .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
          .authorizeHttpRequests(authorize -> authorize
             .requestMatchers(HttpMethod.POST, "/user").permitAll()
+                 .requestMatchers("h2-console/**").permitAll()
             .requestMatchers(HttpMethod.POST, "/destino", "/veiculo").hasRole("ADMIN")
                  .anyRequest().permitAll()
          )

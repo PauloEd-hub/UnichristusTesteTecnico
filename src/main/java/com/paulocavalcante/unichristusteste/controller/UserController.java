@@ -2,6 +2,7 @@ package com.paulocavalcante.unichristusteste.controller;
 
 
 import com.paulocavalcante.unichristusteste.mapper.UserMapper;
+import com.paulocavalcante.unichristusteste.request.UserRequest;
 import com.paulocavalcante.unichristusteste.response.UsuarioResponse;
 import com.paulocavalcante.unichristusteste.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,14 @@ public class UserController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+
+    @PostMapping("/register")
+    public UsuarioResponse registerUser(@RequestBody UserRequest userRequest) {
+        var response = UserMapper.requestToModel(userRequest);
+
+        return UserMapper.modelToResponse(usuarioService.cadastraUsuario(response));
+    }
 
     @GetMapping //Mostra todos os usuários cadastrados
     public List<UsuarioResponse> usuariosCadastrados() {

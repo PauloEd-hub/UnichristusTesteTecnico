@@ -1,5 +1,6 @@
 package com.paulocavalcante.unichristusteste.controller;
 
+import com.paulocavalcante.unichristusteste.request.AutheticationRequest;
 import com.paulocavalcante.unichristusteste.request.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login") //Login de usuário
-    public ResponseEntity<AuthenticationResponse> auth(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<AuthenticationResponse> auth(@RequestBody AutheticationRequest userRequest) {
         return ResponseEntity.ok(authService.auth(userRequest));
     }
 

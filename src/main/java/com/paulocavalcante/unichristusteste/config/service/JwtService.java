@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtService {
 
-    private final String SECRET_KEY = "6253bcb5ca3596cb70c438510dea7ab7d8ed40dfd2fe8c704473e3d7ba725bf6";
+    private final String SECRET_KEY = "38782F413F4428472B4B6150645367566B597033733676397924422645294840";
 
     public Object generateTokenUser(Optional<User> user) {
         return null;

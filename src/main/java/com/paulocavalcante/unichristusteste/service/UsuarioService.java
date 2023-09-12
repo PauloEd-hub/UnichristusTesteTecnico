@@ -1,5 +1,6 @@
 package com.paulocavalcante.unichristusteste.service;
 
+import com.paulocavalcante.unichristusteste.Exceptions.DataAlreadyRegisterException;
 import com.paulocavalcante.unichristusteste.entity.User;
 import com.paulocavalcante.unichristusteste.repository.UserRepository;
 import jakarta.persistence.NoResultException;
@@ -19,6 +20,10 @@ public class UsuarioService {
     }
 
     public User cadastraUsuario(User user) {
+        if(userRepository.existsByEmail(user.getEmail())) {
+            throw new DataAlreadyRegisterException("Já existe um usuário com este email!");
+        }
+
         return userRepository.save(user);
     }
 
